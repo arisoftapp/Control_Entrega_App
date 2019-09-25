@@ -11,8 +11,11 @@ module.exports = function(app) {
                     message: 'Error al consultar previo:' + err
                 });
             } else {
-                success = true,
-                    res.json({ previo: data });
+
+                res.json({
+                    success: true,
+                    previo: data
+                });
             }
 
         });
