@@ -17,6 +17,7 @@ server.use(bodyParser.json());
 // Rutas
 //require('./routes/authenticate')(server);
 require('./routes/control_entrega')(server);
+require('./routes/login')(server);
 
 
 /*//Middleware to check whether you're auth - Todas las rutas arriba estan desprotegidas
