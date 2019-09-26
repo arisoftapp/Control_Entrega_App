@@ -18,6 +18,7 @@ module.exports = function(app) {
                     });
                 } else {
                     if (data[0].contra != contra) {
+                        
                         res.json({
                             success: false,
                             mensaje: "contraseña incorrecta"

@@ -8,7 +8,8 @@ userModel.getValidarUsuario = (usuario, callback) => {
             b.nombre_empresa AS 'empresa',
             b.id_empresa as 'id_empresa',
             b.dominio AS 'dominio',
-            a.username AS 'usuario'
+            a.username AS 'usuario',
+            a.password AS 'contra'
         FROM 
             usuarios AS a
             INNER JOIN
