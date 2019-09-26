@@ -3,9 +3,9 @@ let consurModel = {};
 consurModel.getPrevioCompra = (codigo, callback) => {
     if (dbCOBOL) {
         dbCOBOL.query(`SELECT 
-        CREN_ART as articulo,
-        CREN_CANT as cantidad,
-        CREN_SURT as surtido
+        CREN_ART as 'articulo',
+        CREN_CANT as 'cantidad',
+        CREN_SURT as 'surtido'
         FROM PUBLIC.COMREN
         WHERE PUBLIC.COMREN.CREN_OPE=1
         AND PUBLIC.COMREN.CREN_FOL='` + codigo + `'

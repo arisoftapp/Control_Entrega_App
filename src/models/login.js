@@ -6,9 +6,9 @@ userModel.getValidarUsuario = (usuario, callback) => {
     if (dbAdmin) {
         dbAdmin.query(`SELECT 
             b.nombre_empresa AS 'empresa',
+            b.id_empresa as 'id_empresa',
             b.dominio AS 'dominio',
-            a.username AS 'usuario', 
-            a.password AS 'contra'
+            a.username AS 'usuario'
         FROM 
             usuarios AS a
             INNER JOIN
