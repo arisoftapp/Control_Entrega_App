@@ -1,6 +1,8 @@
 let dbCOBOL = require('../dbMacro');
-let consurModel = {};
-consurModel.getAlmacenes = (callback) => {
+let almModel = {};
+
+almModel.getAlmacenes = (callback) => {
+    console.log("xd");
     if (dbCOBOL) {
         dbCOBOL.query(`SELECT 
         ALM_LLAVE AS 'idalmacen',
@@ -18,4 +20,4 @@ consurModel.getAlmacenes = (callback) => {
     }
 };
 
-module.exports = consurModel;
+module.exports = almModel;

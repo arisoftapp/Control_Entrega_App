@@ -1,13 +1,17 @@
-const controlEntrega = require('../models/control_entrega');
+const almacenes = require('../models/almacenes');
 
 module.exports = function(app) {
 
     app.get('/control_almacenes', (req, res) => {
-        controlEntrega.getAlmacenes((err, data) => {
+        almacenes.getAlmacenes((err, data) => {
             if (err) {
                 res.status(500).send({
                     success: false,
                     message: 'Error al consultar almacenes:' + err
+                });
+                res.json({
+                    success: false,
+                    mensaje: "error al consultar almacenes " + err
                 });
 
             } else {
@@ -19,13 +23,11 @@ module.exports = function(app) {
                 } else {
                     res.json({
                         success: true,
-                        usuario: data,
+                        almacenes: data,
                     });
                 }
             }
 
         });
-
-
     });
 }
