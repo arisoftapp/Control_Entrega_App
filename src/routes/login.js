@@ -8,7 +8,7 @@ module.exports = function(app) {
             if (err) {
                 res.status(500).send({
                     success: false,
-                    message: 'Error al comprobar usuario'
+                    message: 'Error al comprobar usuario:' + err
                 });
             } else {
                 if (data.length < 1) {
@@ -18,7 +18,7 @@ module.exports = function(app) {
                     });
                 } else {
                     if (data[0].contra != contra) {
-                        
+
                         res.json({
                             success: false,
                             mensaje: "contraseña incorrecta"
