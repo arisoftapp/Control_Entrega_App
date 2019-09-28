@@ -9,10 +9,6 @@ module.exports = function(app) {
                     success: false,
                     message: 'Error al consultar almacenes:' + err
                 });
-                res.json({
-                    success: false,
-                    mensaje: "error al consultar almacenes " + err
-                });
 
             } else {
                 if (data.length < 1) {
