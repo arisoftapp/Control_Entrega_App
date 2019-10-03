@@ -19,6 +19,8 @@ server.use(bodyParser.json());
 require('./routes/control_entrega')(server);
 require('./routes/login')(server);
 require('./routes/almacenes')(server);
+require('./routes/modificar_previo')(server);
+
 
 
 /*//Middleware to check whether you're auth - Todas las rutas arriba estan desprotegidas

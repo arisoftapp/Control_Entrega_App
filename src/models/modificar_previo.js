@@ -1,0 +1,45 @@
+let dbCOBOL = require('../dbMacro');
+let modificarModel = {};
+
+modificarModel.updatePrevioComdoc = (folio,cantidad,callback) => {
+    if (dbCOBOL) {
+        const sql = `UPDATE PUBLIC.COMDOC 
+        SET 
+        CDOC_UDS_SURT = '` + cantidad + `'
+        WHERE CDOC_FOL = '` + folio + `'
+        AND CDOC_OPE=1
+        `;
+        dbCOBOL.queryResult(sql, function(err, rows) {
+            if (err) {
+                //throw err;
+                callback(err, null);
+            } else {
+                callback(null, rows);
+            }
+        });
+    }
+};
+modificarModel.updatePrevioComren = (folio,cantidad,articulo,callback) => {
+    if (dbCOBOL) {
+        const sql = `UPDATE PUBLIC.COMREN 
+        SET 
+        CREN_SURT = '` + cantidad + `'
+        WHERE CREN_FOL = '` + folio + `'
+        AND CREN_ART='` + articulo + `'
+        AND CREN_OPE=1
+        `;
+        dbCOBOL.queryResult(sql, function(err, rows) {
+            if (err) {
+                //throw err;
+                callback(err, null);
+            } else {
+                console.log(rows.fetch);
+                callback(null, rows);
+            }
+        });
+    }
+};
+
+
+
+module.exports = modificarModel;

@@ -48,4 +48,30 @@ consurModel.getEstatus = (codigo,almacen, callback) => {
         });
     }
 };
+consurModel.getComplementos = (folio,almacen, callback) => {
+    if (dbCOBOL) {
+        dbCOBOL.query(`SELECT 
+        CDOC_FOL as 'folio',
+        CDOC_FCH as 'fecha',
+        CDOC_ALM as 'almacen',
+        CDOC_UDS as 'unidades_a_surtir',
+        CDOC_PRO as'codigo_prov',
+        PRO_NOMBRE as 'nom_prov'
+        FROM PUBLIC.COMDOC,PUBLIC.COMPRO
+        WHERE PUBLIC.COMDOC.CDOC_OPE=1
+        AND PUBLIC.COMDOC.CDOC_FOL='` + folio + `'
+        AND PUBLIC.COMDOC.CDOC_ALM='` + almacen + `'
+        AND PUBLIC.COMPRO.PRO_LLAVE=PUBLIC.COMDOC.CDOC_PRO
+    
+    `, function(err, rows) {
+            if (err) {
+                //throw err;
+                callback(err, null);
+            } else {
+                callback(null, rows);
+            }
+        });
+    }
+};
+
 module.exports = consurModel;

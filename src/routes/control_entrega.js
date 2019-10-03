@@ -30,6 +30,7 @@ module.exports = function(app) {
                         });
                     } else {
                         if (estatus == "A") {
+
                             controlEntrega.getPrevioCompra(codigo,fecha,almacen, (err, data) => {
                                 if (err) {
                                     res.status(500).send({
@@ -59,4 +60,35 @@ module.exports = function(app) {
 
 
     });
+
+
+
+    app.get('/complementos/:folio/:almacen', (req, res) => {
+        let folio = req.params.folio;
+        let almacen = req.params.almacen;
+        controlEntrega.getComplementos(folio,almacen,(err, data) => {
+            if (err) {
+                res.status(500).send({
+                    success: false,
+                    message: 'Error al consultar complementos:' + err
+                });
+
+            } else {
+                if (data.length < 1) {
+                    res.json({
+                        success: false,
+                        mensaje: "No encontro complementos"
+                    });
+                } else {
+                    res.json({
+                        success: true,
+                        complementos: data,
+                    });
+                }
+            }
+
+        });
+    });
+
+
 }
