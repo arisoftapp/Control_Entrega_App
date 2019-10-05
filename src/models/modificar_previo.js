@@ -33,7 +33,6 @@ modificarModel.updatePrevioComren = (folio,cantidad,articulo,callback) => {
                 //throw err;
                 callback(err, null);
             } else {
-                console.log(rows.fetch);
                 callback(null, rows);
             }
         });

@@ -20,6 +20,7 @@ require('./routes/control_entrega')(server);
 require('./routes/login')(server);
 require('./routes/almacenes')(server);
 require('./routes/modificar_previo')(server);
+require('./routes/crear_orden')(server);
 
 
 
