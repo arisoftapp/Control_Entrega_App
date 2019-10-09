@@ -64,14 +64,77 @@ module.exports = function(app) {
             
                     });
 
+                }
+
+                
+            }
+
+        });
+    });
+    app.get('/consultar_datos_comdoc/:folio_previo/:almacen/:folio_orden/:totalreg/:totaluds/:sumatotal/:iva/:total', (req, res) => {
+        let folio_previo = req.params.folio_previo;
+        let almacen = req.params.almacen;
+        let folio_orden = req.params.folio_orden;
+        let proveedor;
+        let totalreg= req.params.totalreg;
+        let totaluds = req.params.totaluds;
+        let tipocambio;
+        let sumatotal=req.params.sumatotal;
+        let iva=req.params.iva;
+        let total=req.params.total;
+        let fecha=dateFormat(new Date(), "yyyy-mm-dd");
+        let fechasf=dateFormat(new Date(), "yyyymmdd");
+        let horasf=dateFormat(new Date(),"hhMMss");
+        let plazo;
+        let diadescuento;
+        let dias;
+        crear_orden.getDatos_comdoc(folio_previo,almacen,(err, data) => {
+            if (err) {
+                res.status(500).send({
+                    success: false,
+                    message: 'Error al consultar datos del documento:' + err
+                });
+
+            } else {
+                if (data.length < 1) 
+                {
+                    res.json({
+                        success: false,
+                        mensaje: "No encontro datos del documento"
+                    });
+                }
+                else
+                {
+                    plazo=data[0].plazo;
+                    diadescuento=data[0].descuentodias;
+                    dias=data[0].dias;
+                    proveedor=data[0].proveedor;
+                    tipocambio=data[0].tipocambio;
+
                     /*
                     res.json({
                         success: true,
-                        message:"consulta con exito ",
-                        respuesta: data,
+                        mensaje: "consulta con exito ",
+                        respuesta:data
                     });
                     */
-
+                   crear_orden.insert_comdoc(folio_orden,folio_previo,fecha,almacen,proveedor,totalreg,totaluds,tipocambio,sumatotal,iva,total,horasf,fechasf,plazo,diadescuento,dias,(err, data) => {
+                    if (err) {
+                        res.status(500).send({
+                            success: false,
+                            message: 'Error al crear comdoc:' + err.message
+                        });
+        
+                    } else {
+                            res.json({
+                                success: true,
+                                message:"Se creo",
+                                respuesta: data,
+                            });
+                        
+                    }
+        
+                });
 
                 }
 
@@ -80,5 +143,6 @@ module.exports = function(app) {
 
         });
     });
+
 
 }

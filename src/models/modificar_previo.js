@@ -1,13 +1,14 @@
 let dbCOBOL = require('../dbMacro');
 let modificarModel = {};
 
-modificarModel.updatePrevioComdoc = (folio,cantidad,callback) => {
+modificarModel.updatePrevioComdoc = (folio,almacen,cantidad,callback) => {
     if (dbCOBOL) {
         const sql = `UPDATE PUBLIC.COMDOC 
         SET 
         CDOC_UDS_SURT = '` + cantidad + `'
         WHERE CDOC_FOL = '` + folio + `'
         AND CDOC_OPE=1
+        AND CDOC_ALM='` + almacen + `'
         `;
         dbCOBOL.queryResult(sql, function(err, rows) {
             if (err) {

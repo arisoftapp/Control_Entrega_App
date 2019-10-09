@@ -9,7 +9,9 @@ consurModel.getPrevioCompra = (codigo,fecha,almacen, callback) => {
         CREN_POS as 'posicion',
         ART_DESC1 as 'descripcion',
         ART_COD2 as 'codigo2',
-        CDOC_ALM as 'almacen'
+        CDOC_ALM as 'almacen',
+        CREN_COS as 'costo',
+        CREN_IMP1 as 'iva'
         FROM PUBLIC.COMREN, PUBLIC.INVART,PUBLIC.COMDOC
         WHERE PUBLIC.COMREN.CREN_OPE=1
         AND PUBLIC.COMREN.CREN_FOL='` + codigo + `'
