@@ -4,13 +4,14 @@ let folioModel = {};
 folioModel.getFolio = (folio,almacen,callback) => {
     if (dbCOBOL) {
         dbCOBOL.query(`SELECT 
-        CDOC_FOL AS 'folio',
+        CDOC_FOL AS 'folio'
         FROM
         PUBLIC.COMDOC
         WHERE
-        CDOC_OPE=2
+        PUBLIC.COMDOC.CDOC_OPE=2
         AND PUBLIC.COMDOC.CDOC_FOL='`+folio+`' 
         AND PUBLIC.COMDOC.CDOC_ALM='`+almacen+`'
+
     `, function(err, rows) {
             if (err) {
                 //throw err;
@@ -24,4 +25,4 @@ folioModel.getFolio = (folio,almacen,callback) => {
 
 
 
-module.exports = almModel;
+module.exports = folioModel;

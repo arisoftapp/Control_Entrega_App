@@ -2,24 +2,27 @@ const folios = require('../models/folios_orden');
 
 module.exports = function(app) {
 
-    app.get('/folios/:folio/:almacen', (req, res) => {
-        folios.getFolios((err, data) => {
+    app.get('/foliosOC/:folio/:almacen', (req, res) => {
+        let folio=req.params.folio;
+        let almacen=req.params.almacen;
+        folios.getFolio(folio,almacen,(err, data) => {
             if (err) {
                 res.status(500).send({
                     success: false,
-                    message: 'Error al consultar almacenes:' + err
+                    message: 'Error al consultar folio:' + err
                 });
 
             } else {
                 if (data.length < 1) {
                     res.json({
-                        success: false,
-                        mensaje: "No encontro almacenes"
+                        success: true,
+                        message: "folio disponible"
                     });
                 } else {
                     res.json({
-                        success: true,
-                        almacenes: data,
+                        success: false,
+                        message:"folio no disponible",
+                        respuesta: data,
                     });
                 }
             }
