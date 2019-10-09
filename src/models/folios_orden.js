@@ -1,13 +1,16 @@
 let dbCOBOL = require('../dbMacro');
 let folioModel = {};
 
-folioModel.getAlmacenes = (callback) => {
+folioModel.getFolio = (folio,almacen,callback) => {
     if (dbCOBOL) {
         dbCOBOL.query(`SELECT 
-        ALM_LLAVE AS 'idalmacen',
-        ALM_NOMBRE AS 'almacen'
+        CDOC_FOL AS 'folio',
         FROM
-        PUBLIC.INVALM
+        PUBLIC.COMDOC
+        WHERE
+        CDOC_OPE=2
+        AND PUBLIC.COMDOC.CDOC_FOL='`+folio+`' 
+        AND PUBLIC.COMDOC.CDOC_ALM='`+almacen+`'
     `, function(err, rows) {
             if (err) {
                 //throw err;
