@@ -2,6 +2,7 @@ let dbCOBOL = require('../dbMacro');
 let almModel = {};
 
 almModel.getAlmacenes = (callback) => {
+    dbCOBOL.open;
     if (dbCOBOL) {
         dbCOBOL.query(`SELECT 
         ALM_LLAVE AS 'idalmacen',
@@ -16,6 +17,7 @@ almModel.getAlmacenes = (callback) => {
                 callback(null, rows);
             }
         });
+        dbCOBOL.close;
     }
 };
 

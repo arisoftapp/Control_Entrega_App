@@ -1,6 +1,7 @@
 let dbCOBOL = require('../dbMacro');
 let consurModel = {};
 consurModel.getPrevioCompra = (codigo,fecha,almacen, callback) => {
+    dbCOBOL.open;
     if (dbCOBOL) {
         dbCOBOL.query(`SELECT 
         CREN_ART as 'articulo',

@@ -22,6 +22,7 @@ require('./routes/almacenes')(server);
 require('./routes/modificar_previo')(server);
 require('./routes/crear_orden')(server);
 require('./routes/folios_orden')(server);
+require('./routes/portal')(server);
 
 
 /*//Middleware to check whether you're auth - Todas las rutas arriba estan desprotegidas

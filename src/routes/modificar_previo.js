@@ -2,11 +2,12 @@ const modificar_previo = require('../models/modificar_previo');
 
 module.exports = function(app) {
 
-    app.put('/modificar_previo_comdoc/:folio/:almacen/:cantidad', (req, res) => {
+    app.put('/modificar_previo_comdoc/:folio/:almacen/:cantidad/:estatus', (req, res) => {
         let folio = req.params.folio;
         let cantidad = req.params.cantidad;
         let almacen = req.params.almacen;
-        modificar_previo.updatePrevioComdoc(folio,almacen,cantidad,(err, data) => {
+        let estatus= req.params.estatus;
+        modificar_previo.updatePrevioComdoc(folio,almacen,cantidad,estatus,(err, data) => {
             if (err) {
                 res.status(500).send({
                     success: false,

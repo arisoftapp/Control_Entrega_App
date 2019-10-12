@@ -6,6 +6,7 @@ module.exports = function(app) {
         let folio_previo = req.params.folio_previo;
         let folio_orden = req.params.folio_orden;
         let posicion = req.params.posicion;
+        let pos_previo=req.params.pos_previo;
         let cantidad = req.params.cantidad;
         let articulo = req.params.articulo;
         let factor;
@@ -19,7 +20,7 @@ module.exports = function(app) {
         let imp2_tab;
         let fecha=dateFormat(new Date(), "yyyy-mm-dd");
         let fechasf=dateFormat(new Date(), "yyyymmdd");
-        crear_orden.getDatos_comren(folio_previo,posicion,(err, data) => {
+        crear_orden.getDatos_comren(folio_previo,articulo,(err, data) => {
             if (err) {
                 res.status(500).send({
                     success: false,
@@ -31,7 +32,7 @@ module.exports = function(app) {
                 {
                     res.json({
                         success: false,
-                        mensaje: "No encontro datos del documento"
+                        message: "No encontro datos del documento"
                     });
                 }
                 else

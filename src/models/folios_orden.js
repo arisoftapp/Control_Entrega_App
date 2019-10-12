@@ -2,6 +2,7 @@ let dbCOBOL = require('../dbMacro');
 let folioModel = {};
 
 folioModel.getFolio = (folio,almacen,callback) => {
+    dbCOBOL.open;
     if (dbCOBOL) {
         dbCOBOL.query(`SELECT 
         CDOC_FOL AS 'folio'

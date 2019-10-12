@@ -99,7 +99,7 @@ CREN_CONTRATO,CREN_TAR,CREN_TAR_IMP,CREN_AGRUP
     }
 };
 
-crearModel.getDatos_comren = (folio,posicion,callback) => {
+crearModel.getDatos_comren = (folio,articulo,callback) => {
     if (dbCOBOL) {
         dbCOBOL.query(`SELECT 
         CREN_FACTOR AS 'factor',
@@ -116,7 +116,7 @@ crearModel.getDatos_comren = (folio,posicion,callback) => {
         WHERE
         PUBLIC.COMREN.CREN_OPE=1 
         AND PUBLIC.COMREN.CREN_FOL='`+folio+`' 
-        AND PUBLIC.COMREN.CREN_POS='`+posicion+`'
+        AND PUBLIC.COMREN.CREN_ART='`+articulo+`'
     `, function(err, rows) {
             if (err) {
                 //throw err;
