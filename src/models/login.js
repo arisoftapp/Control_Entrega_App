@@ -17,6 +17,7 @@ userModel.getValidarUsuario = (usuario, callback) => {
         WHERE username='` + usuario + `' `, (err, rows) => {
             if (err) {
                 throw err;
+                callback(err,null);
             } else {
                 callback(null, rows);
             }

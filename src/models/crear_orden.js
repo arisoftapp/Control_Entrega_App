@@ -90,7 +90,7 @@ CREN_CONTRATO,CREN_TAR,CREN_TAR_IMP,CREN_AGRUP
             )`;
         dbCOBOL.queryResult(sql, function(err, rows) {
             if (err) {
-                //throw err;
+                throw err;
                 callback(err, null);
             } else {
                 callback(null, rows);
@@ -119,7 +119,7 @@ crearModel.getDatos_comren = (folio,articulo,callback) => {
         AND PUBLIC.COMREN.CREN_ART='`+articulo+`'
     `, function(err, rows) {
             if (err) {
-                //throw err;
+                throw err;
                 callback(err, null);
             } else {
                 callback(null, rows);
@@ -422,7 +422,7 @@ crearModel.insert_comdoc = (folio_orden,folio_previo,fecha,almacen,proveedor,tot
             )`;
         dbCOBOL.queryResult(sql, function(err, rows) {
             if (err) {
-                //throw err;
+                throw err;
                 callback(err, null);
             } else {
                 callback(null, rows);
@@ -447,7 +447,7 @@ crearModel.getDatos_comdoc = (folio,almacen,callback) => {
         AND PUBLIC.COMDOC.CDOC_ALM='`+almacen+`'
     `, function(err, rows) {
             if (err) {
-                //throw err;
+                throw err;
                 callback(err, null);
             } else {
                 callback(null, rows);

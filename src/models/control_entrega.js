@@ -23,7 +23,7 @@ consurModel.getPrevioCompra = (codigo,fecha,almacen, callback) => {
     
     `, function(err, rows) {
             if (err) {
-                //throw err;
+                throw err;
                 callback(err, null);
             } else {
                 callback(null, rows);
@@ -43,7 +43,7 @@ consurModel.getEstatus = (codigo,almacen, callback) => {
     
     `, function(err, rows) {
             if (err) {
-                //throw err;
+                throw err;
                 callback(err, null);
             } else {
                 callback(null, rows);
@@ -68,7 +68,7 @@ consurModel.getComplementos = (folio,almacen, callback) => {
     
     `, function(err, rows) {
             if (err) {
-                //throw err;
+                throw err;
                 callback(err, null);
             } else {
                 callback(null, rows);

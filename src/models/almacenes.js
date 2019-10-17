@@ -11,7 +11,7 @@ almModel.getAlmacenes = (callback) => {
         PUBLIC.INVALM
     `, function(err, rows) {
             if (err) {
-                //throw err;
+                throw err;
                 callback(err, null);
             } else {
                 callback(null, rows);

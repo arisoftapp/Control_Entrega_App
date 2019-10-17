@@ -15,7 +15,7 @@ modificarModel.updatePrevioComdoc = (folio,almacen,cantidad,estatus,callback) =>
             `;
             dbCOBOL.queryResult(sql, function(err, rows) {
                 if (err) {
-                    //throw err;
+                    throw err;
                     callback(err, null);
                 } else {
                     callback(null, rows);
@@ -34,7 +34,7 @@ modificarModel.updatePrevioComdoc = (folio,almacen,cantidad,estatus,callback) =>
             `;
             dbCOBOL.queryResult(sql, function(err, rows) {
                 if (err) {
-                    //throw err;
+                    throw err;
                     callback(err, null);
                 } else {
                     callback(null, rows);
@@ -56,7 +56,7 @@ modificarModel.updatePrevioComren = (folio,cantidad,articulo,callback) => {
         `;
         dbCOBOL.queryResult(sql, function(err, rows) {
             if (err) {
-                //throw err;
+                throw err;
                 callback(err, null);
             } else {
                 callback(null, rows);
